@@ -1,0 +1,8 @@
+{
+  "watch": [
+    "src"
+  ],
+  "ext": "ts",
+  "delay": 3,
+  "exec": "tsc && nodejs dist/swagger.js && nodejs dist/server.js"
+}

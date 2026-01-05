@@ -1,0 +1,51 @@
+{
+  "type": "commonjs",
+  "dependencies": {
+    "@types/bcrypt": "^5.0.2",
+    "@types/jsonwebtoken": "^9.0.10",
+    "bcrypt": "^6.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "json-ignore": "^0.4.0",
+    "jsonwebtoken": "^9.0.2",
+    "pg": "^8.16.0",
+    "reflect-metadata": "^0.2.2",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-dist": "^5.27.0",
+    "swagger-ui-express": "^5.0.1",
+    "tslog": "^4.9.3",
+    "tsyringe": "^4.10.0",
+    "typeorm": "^0.3.25",
+    "zod": "^3.25.67"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.3",
+    "@types/jest": "^30.0.0",
+    "@types/node": "^24.0.1",
+    "@types/swagger-jsdoc": "^6.0.4",
+    "@types/swagger-ui-express": "^4.1.8",
+    "coveralls-next": "^4.0.1",
+    "eslint": "^9.29.0",
+    "jest": "^30.0.3",
+    "jest-mock-extended": "^4.0.0",
+    "node-pg-migrate": "^8.0.2",
+    "nodemon": "^3.1.10",
+    "swagger-autogen": "^2.23.7",
+    "ts-jest": "^29.4.0",
+    "ts-node": "^10.9.2"
+  },
+  "scripts": {
+    "migrate": "node-pg-migrate",
+    "migrate-database": "node-pg-migrate up -m migrations",
+    "delete-database": "node-pg-migrate down 100 -m migrations",
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "dev": "nodemon",
+    "lint": "eslint 'src/**/*.ts'",
+    "test": "jest --runInBand --coverage",
+    "devTest": "jest",
+    "swagger": "node dist/swagger.js"
+  }
+}

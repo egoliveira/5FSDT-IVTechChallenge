@@ -1,0 +1,32 @@
+version: '3'
+
+volumes:
+  pgsql_data: { }
+
+services:
+  postgresql:
+    image: postgres:17.5-alpine3.22
+    container_name: schola_blog_postgresql
+    restart: always
+    environment:
+      POSTGRES_USER: $POSTGRES_USER
+      POSTGRES_DB: $POSTGRES_DATABASE
+      POSTGRES_PASSWORD: $POSTGRES_PASSWORD
+    volumes:
+      - pgsql_data:/var/lib/postgresql
+  backend:
+    container_name: schola_blog_backend_node
+    environment:
+      - DATABASE_HOST=postgresql
+      - DATABASE_USER=$POSTGRES_USER
+      - DATABASE_PASSWORD=$POSTGRES_PASSWORD
+      - DATABASE_NAME=$POSTGRES_DATABASE
+      - DATABASE_URL=postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgresql:5432/${POSTGRES_DATABASE}
+    depends_on:
+      - postgresql
+    ports:
+      - "$BACKEND_LOCAL_PORT:$BACKEND_DOCKER_PORT"
+    restart: always
+    build: ./backend_image
+    command:
+      - ./run_app.sh
