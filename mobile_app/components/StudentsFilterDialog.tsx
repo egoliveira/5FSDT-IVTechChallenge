@@ -154,7 +154,7 @@ const StudentsFilterDialog: React.FC<Props> = ({visible, onDialogClose}) => {
                         </View>
                     </View>)}
 
-                    {!teachingLevelError && (
+                    {teachingLevelError && (
                         <Text variant="bodyMedium">Ocorreu um erro ao carregar os filtros de alunos.</Text>)}
 
                     {(isLoadingTeachingLevel || isFetchingTeachingLevel) && (<ActivityIndicator size="large"/>)}
